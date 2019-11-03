@@ -496,7 +496,6 @@ do  -- cache spells that have a cooldown
 					end
 				end
 			end
-		end
 		elseif IS_WOW_CLASSIC then
 			local offsets, numTabs
 			numTabs = GetNumSpellTabs()
