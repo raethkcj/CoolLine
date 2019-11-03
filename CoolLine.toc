@@ -1,9 +1,9 @@
 ## Interface: 80000
 ## Version: @project-version@
 
-## Title: CoolLine
+## Title: CoolLine - Classic compatible
 ## Notes: Shows cooldowns on a single bar.
-## Author: TotalPackage, Phanx
+## Author: TotalPackage, Phanx, LoneWanderer-GH for first classic port
 ## X-Curse-Project-ID: 20148
 ## X-WoWI-ID: 12467
 
