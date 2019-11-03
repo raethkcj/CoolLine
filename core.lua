@@ -4,6 +4,7 @@ CoolLine:SetScript("OnEvent", function(this, event, ...)
 end)
 
 local IS_WOW_8 = GetBuildInfo():match("^8")
+local IS_WOW_CLASSIC = GetBuildInfo():match("^1")
 
 local smed = LibStub("LibSharedMedia-3.0")
 
@@ -274,19 +275,23 @@ function CoolLine:PLAYER_LOGIN()
 	self.SPELL_UPDATE_CHARGES = self.SPELL_UPDATE_COOLDOWN
 	self:SPELL_UPDATE_COOLDOWN()
 
-	self:RegisterEvent("PET_BATTLE_OPENING_START")
-	self:RegisterEvent("PET_BATTLE_CLOSE")
-	self.PET_BATTLE_OPENING_START = self.Hide
-	self.PET_BATTLE_CLOSE = self.Show
-	if C_PetBattles.IsInBattle() then
-		self:Hide()
+	-- IF WOW RETAIL THEN
+	if not IS_WOW_CLASSIC then
+		self:RegisterEvent("PET_BATTLE_OPENING_START")
+		self:RegisterEvent("PET_BATTLE_CLOSE")
+		self.PET_BATTLE_OPENING_START = self.Hide
+		self.PET_BATTLE_CLOSE = self.Show
+		if C_PetBattles.IsInBattle() then
+			self:Hide()
+		end
+	
+		self:RegisterUnitEvent("UNIT_ENTERED_VEHICLE", "player")
+		if UnitHasVehicleUI("player") then
+			self:RegisterEvent("ACTIONBAR_UPDATE_COOLDOWN")
+			self:RegisterUnitEvent("UNIT_EXITED_VEHICLE", "player")
+		end
 	end
-
-	self:RegisterUnitEvent("UNIT_ENTERED_VEHICLE", "player")
-	if UnitHasVehicleUI("player") then
-		self:RegisterEvent("ACTIONBAR_UPDATE_COOLDOWN")
-		self:RegisterUnitEvent("UNIT_EXITED_VEHICLE", "player")
-	end
+	-- END WOW RETAIL
 
 	updatelook()
 	self:SetAlpha((#cooldowns == 0 and db.inactivealpha) or db.activealpha)
@@ -444,51 +449,93 @@ do  -- cache spells that have a cooldown
 	local function CacheBook(btype)
 		local lastID
 		local sb = spells[btype]
-		local _, _, offset, numSpells = GetSpellTabInfo(2)
-		for i = 1, offset + numSpells do
-			local spellName = GetSpellBookItemName(i, btype)
-			if not spellName then break end
-			local spellType, spellID = GetSpellBookItemInfo(i, btype)
-			if spellID and spellType == "FLYOUT" then
-				local _, _, numSlots, isKnown = GetFlyoutInfo(spellID)
-				if isKnown then
-					for j = 1, numSlots do
-						local flyID, _, _, flyName = GetFlyoutSlotInfo(spellID, j)
-						lastID = flyID
-						if flyID then
-							local flyCD = GetSpellBaseCooldown(flyID)
-							if flyCD and flyCD > 2499 then
-								sb[flyID] = flyName -- specialspells[flyID] or flyName
+		
+		if IS_WOW_8 then
+			local _, _, offset, numSpells = GetSpellTabInfo(2)
+			for i = 1, offset + numSpells do
+				local spellName = GetSpellBookItemName(i, btype)
+				if not spellName then break end
+				local spellType, spellID = GetSpellBookItemInfo(i, btype)
+				if spellID and spellType == "FLYOUT" then
+					local _, _, numSlots, isKnown = GetFlyoutInfo(spellID)
+					if isKnown then
+						for j = 1, numSlots do
+							local flyID, _, _, flyName = GetFlyoutSlotInfo(spellID, j)
+							lastID = flyID
+							if flyID then
+								local flyCD = GetSpellBaseCooldown(flyID)
+								if flyCD and flyCD > 2499 then
+									sb[flyID] = flyName -- specialspells[flyID] or flyName
+								end
 							end
 						end
 					end
-				end
-			elseif spellID and spellType == "SPELL" and spellID ~= lastID then
-				-- Base spell = slot ID + name from slot ID
-				-- Real spell = ID from slot name + name from slot name
-				-- For the purposes of CoolLine we only care about the real spell.
-				lastID = spellID
-				spellName, _, _, _, _, _, spellID = GetSpellInfo(spellName)
-				if spellID then
-					-- Special spells like warlock Cauterize Master can be in
-					-- a limbo state during loading. Just ignore them in that
-					-- case. The spellbook will update again momentarily and
-					-- they will correctly resolve then.
-					local _, maxCharges = GetSpellCharges(spellID)
-					if maxCharges and maxCharges > 0 then
-						chargespells[btype][spellID] = spellName
-					else
-						local cd = GetSpellBaseCooldown(spellID)
-						if cd and cd > 2499 then
-							sb[spellID] = spellName
-				--			if specialspells[spellName] then
-				--				sb[ specialspells[spellName] ] = spellName
-				--			end
+				elseif spellID and spellType == "SPELL" and spellID ~= lastID then
+					-- Base spell = slot ID + name from slot ID
+					-- Real spell = ID from slot name + name from slot name
+					-- For the purposes of CoolLine we only care about the real spell.
+					lastID = spellID
+					spellName, _, _, _, _, _, spellID = GetSpellInfo(spellName)
+					if spellID then
+						-- Special spells like warlock Cauterize Master can be in
+						-- a limbo state during loading. Just ignore them in that
+						-- case. The spellbook will update again momentarily and
+						-- they will correctly resolve then.
+						local _, maxCharges = GetSpellCharges(spellID)
+						if maxCharges and maxCharges > 0 then
+							chargespells[btype][spellID] = spellName
+						else
+							local cd = GetSpellBaseCooldown(spellID)
+							if cd and cd > 2499 then
+								sb[spellID] = spellName
+					--			if specialspells[spellName] then
+					--				sb[ specialspells[spellName] ] = spellName
+					--			end
+							end
 						end
 					end
 				end
 			end
 		end
+		elseif IS_WOW_CLASSIC then
+			local offsets, numTabs
+			numTabs = GetNumSpellTabs()
+			for i=1, numTabs do
+				local _, _, offset, numSpells = GetSpellTabInfo(i)
+				for j=1, offset + numSpells do
+					local spellName, spellRank, spellId = GetSpellBookItemName(j, btype)
+					if not spellName then break end
+					local spellType, spellID = GetSpellBookItemInfo(j, btype)
+					-- copy pasta of above retail code
+					if spellID and spellType == "SPELL" and spellID ~= lastID then
+						-- Base spell = slot ID + name from slot ID
+						-- Real spell = ID from slot name + name from slot name
+						-- For the purposes of CoolLine we only care about the real spell.
+						lastID = spellID
+						spellName, _, _, _, _, _, spellID = GetSpellInfo(spellName)
+						if spellID then
+							-- Special spells like warlock Cauterize Master can be in
+							-- a limbo state during loading. Just ignore them in that
+							-- case. The spellbook will update again momentarily and
+							-- they will correctly resolve then.
+							local _, maxCharges = GetSpellCharges(spellID)
+							if maxCharges and maxCharges > 0 then
+								chargespells[btype][spellID] = spellName
+							else
+								local cd = GetSpellBaseCooldown(spellID)
+								if cd and cd > 2499 then
+									sb[spellID] = spellName
+						--			if specialspells[spellName] then
+						--				sb[ specialspells[spellName] ] = spellName
+						--			end
+								end
+							end
+						end
+					end
+				end
+			end
+		end
+		
 	end
 
 	----------------------------------
