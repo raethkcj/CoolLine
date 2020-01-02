@@ -1,4 +1,7 @@
 local CoolLine = CreateFrame("Frame", "CoolLine", UIParent)
+
+CoolLine.MainFrame = CoolLine
+
 CoolLine:SetScript("OnEvent", function(this, event, ...)
 	this[event](this, ...)
 end)
@@ -25,6 +28,9 @@ local frames, cooldowns, specialspells = { }, { }, { }
 CoolLine.spells, CoolLine.chargespells = spells, chargespells
 CoolLine.frames, CoolLine.cooldowns, CoolLine.specialspells = frames, cooldowns, specialspells
 
+local NO_RELOCATE = "NO_RELOCATE"
+CoolLine.NO_RELOCATE = NO_RELOCATE
+
 local SetValue, updatelook, createfs, ShowOptions, RuneCheck
 
 local function SetValueH(this, v, just)
@@ -42,6 +48,33 @@ end
 local function SetValueVR(this, v, just)
 	this:SetPoint(just or "CENTER", CoolLine, "BOTTOM", 0, db.h - v)
 end
+
+--------------------------------
+-- For 3rd party addons such as ElvUI
+function CoolLine:SetConfig(w, h, x, y, font, fontsize, inactivealpha, activealpha, statusbar, updateOption)
+--------------------------------
+	if db then
+		db.w             = w         or db.w
+		db.h             = h         or db.h
+		-- db.x             = x         or db.x
+		-- db.y             = y         or db.y
+		db.font          = font      or db.font
+		db.fontsize      = fontsize  or db.fontsize
+		db.statusbar     = statusbar or db.statusbar
+		db.activealpha   = activealpha or db.activealpha
+		db.inactivealpha = inactivealpha or db.inactivealpha
+	else
+		-- ?
+		print("CoolLine SetConfig called but no db loaded")
+	end
+	self.updatelook(updateOption)
+end
+
+function CoolLine:getConfig()
+	return db.w, db.h, db.x, db.y, db.font, db.fontsize, db.inactivealpha, db.activealpha, db.statusbar
+end
+
+
 
 CoolLine:RegisterEvent("ADDON_LOADED")
 function CoolLine:ADDON_LOADED(a1)
@@ -182,10 +215,14 @@ function CoolLine:ADDON_LOADED(a1)
 		return fs
 	end
 
-	updatelook = function()
+	updatelook = function(option)
 		self:SetWidth(db.w or 130)
 		self:SetHeight(db.h or 18)
-		self:SetPoint("CENTER", UIParent, "CENTER", db.x or 0, db.y or -240)
+
+		if option ~= NO_RELOCATE then
+			self:SetPoint("CENTER", UIParent, "CENTER", db.x or 0, db.y or -240)
+		end
+
 
 		self.bg = self.bg or self:CreateTexture(nil, "ARTWORK")
 		self.bg:SetTexture(smed:Fetch("statusbar", db.statusbar))
@@ -210,6 +247,7 @@ function CoolLine:ADDON_LOADED(a1)
 
 		self.overlay = self.overlay or CreateFrame("Frame", nil, self.border)
 		self.overlay:SetFrameLevel(24)
+		--CoolLine.Overlay = self.overlay
 
 		section = (db.vertical and db.h or db.w) / 6
 		iconsize = ((db.vertical and db.w) or db.h) + (db.iconplus or 4)
@@ -284,7 +322,7 @@ function CoolLine:PLAYER_LOGIN()
 		if C_PetBattles.IsInBattle() then
 			self:Hide()
 		end
-	
+
 		self:RegisterUnitEvent("UNIT_ENTERED_VEHICLE", "player")
 		if UnitHasVehicleUI("player") then
 			self:RegisterEvent("ACTIONBAR_UPDATE_COOLDOWN")
@@ -444,12 +482,12 @@ CoolLine.NewCooldown, CoolLine.ClearCooldown = NewCooldown, ClearCooldown
 
 do  -- cache spells that have a cooldown
 	local GetSpellBookItemName, GetSpellBookItemInfo, GetSpellBaseCooldown, GetSpellCharges
-	    = GetSpellBookItemName, GetSpellBookItemInfo, GetSpellBaseCooldown, GetSpellCharges
+		= GetSpellBookItemName, GetSpellBookItemInfo, GetSpellBaseCooldown, GetSpellCharges
 
 	local function CacheBook(btype)
 		local lastID
 		local sb = spells[btype]
-		
+
 		if IS_WOW_8 then
 			local _, _, offset, numSpells = GetSpellTabInfo(2)
 			for i = 1, offset + numSpells do
@@ -534,7 +572,7 @@ do  -- cache spells that have a cooldown
 				end
 			end
 		end
-		
+
 	end
 
 	----------------------------------
