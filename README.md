@@ -1,4 +1,4 @@
-# CoolLine (classic updated)
+# CoolLine (for retail, classic and ElvUI_CoolLine_Wrapper compatible)
 
 ![](https://github.com/LoneWanderer-GH/CoolLine/workflows/Retail-Classic-Build/badge.svg)
 
