@@ -1,10 +1,12 @@
-# CoolLine
-Shows cooldowns on a single bar -- For wow classic
+# CoolLine (classic updated)
 
 ![](https://github.com/LoneWanderer-GH/CoolLine/workflows/Retail-Classic-Build/badge.svg)
-  
-Go to 
-https://www.curseforge.com/wow/addons/coolline-classic-updated
+
+Shows cooldowns on a single bar for World of Warcraft classic and retail.
+
+It is the original CoolLine modified to be compatible with an addon I made: [ElvUI_CoolLine_Wrapper](https://www.curseforge.com/wow/addons/elvui-coolline-wrapper)
+
+Download [Curse page](https://www.curseforge.com/wow/addons/coolline-classic-updated)
 
 ## Disclaimer
 The original CoolLine license is indicated as "All Rights Reserved unless otherwise explicitly stated."
