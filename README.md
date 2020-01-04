@@ -3,7 +3,6 @@
 [![](http://cf.way2muchnoise.eu/title/356973.svg)](https://www.curseforge.com/wow/addons/coolline-classic-updated)
 [![](http://cf.way2muchnoise.eu/versions/356973.svg)](https://www.curseforge.com/wow/addons/coolline-classic-updated)
 [![](http://cf.way2muchnoise.eu/full_356973_downloads.svg)](https://www.curseforge.com/wow/addons/coolline-classic-updated)
-
 ![](https://github.com/LoneWanderer-GH/CoolLine/workflows/Retail-Classic-Build/badge.svg)
 
 Shows cooldowns on a single bar for World of Warcraft classic and retail.
@@ -14,7 +13,6 @@ It is the original CoolLine modified to be compatible with an addon I made: [Elv
 [![](http://cf.way2muchnoise.eu/title/356978.svg)](https://www.curseforge.com/wow/addons/coolline-classic-updated)
 [![](http://cf.way2muchnoise.eu/versions/356978.svg)](https://www.curseforge.com/wow/addons/coolline-classic-updated)
 [![](http://cf.way2muchnoise.eu/full_356978_downloads.svg)](https://www.curseforge.com/wow/addons/coolline-classic-updated)
-
 ![](https://github.com/LoneWanderer-GH/CoolLine/workflows/Retail-Classic-Build/badge.svg)
 
 ## Disclaimer
