@@ -1,6 +1,8 @@
 # CoolLine
 Shows cooldowns on a single bar -- For wow classic
 
+![](https://github.com/LoneWanderer-GH/CoolLine/workflows/Retail-Classic-Build/badge.svg)
+  
 Go to 
 https://www.curseforge.com/wow/addons/coolline-classic-updated
 
