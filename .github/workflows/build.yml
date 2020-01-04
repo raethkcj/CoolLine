@@ -1,17 +1,36 @@
-name: CI
+name: Retail-Classic-Build
 
-on: [push]
+on:
+  release:
+    types: [published]
 
 jobs:
+
   build:
 
     runs-on: ubuntu-latest
 
     steps:
+
     - uses: actions/checkout@v1
-    - name: Run a one-line script
-      run: echo Hello, world!
-    - name: Run a multi-line script
-      run: |
-        echo Add other actions to build,
-        echo test, and deploy your project.
+
+    - name: Set env with Curse Forge API key
+      shell: bash
+      run: sudo echo "::set-env name=CF_API_KEY::${{ secrets.CF_API_KEY }}"
+
+    - name: Store Curse Forge API key into a .env file
+      shell: bash
+      run: sudo echo "CF_API_KEY=${CF_API_KEY}" > ./.env && ls -al
+      working-directory: ./.release
+
+    - name: Build Retail
+      run: sudo bash ./release.sh -l
+      shell: bash
+      working-directory: ./.release
+
+    - name: Build Classic
+      run: sudo bash ./release.sh -l -g 1.13.3
+      shell: bash
+      working-directory: ./.release
+
+
