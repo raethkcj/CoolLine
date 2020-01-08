@@ -23,3 +23,7 @@ They are free to shut this down.
 Original project and rights owner https://github.com/phanx-wow/CoolLine
 
 Official wow retail wowinterface addon http://www.wowinterface.com/downloads/info12467-CoolLine.html
+
+----
+custom shields.io badge ...
+![](https://img.shields.io/badge/dynamic/json?label=Curse%20downloads&color=orange&query=downloadCount&url=https://addons-ecs.forgesvc.net/api/v2/addon/356973/)
