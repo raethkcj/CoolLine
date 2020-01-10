@@ -1,0 +1,472 @@
+-- # Achievement functions
+"GetLatestUpdatedComparisonStats", -- Returns a list of the comparison unit's latest updated statistics -- /!\ deprecated
+"GetLatestUpdatedStats", -- Returns a list of the player's latest updated statistics -- /!\ deprecated
+-- # Action functions
+"CastPetAction", -- Casts a pet action on a specific target -- /!\ protected
+"GetActionAutocast", -- Returns information about autocast actions -- /!\ deprecated
+"TogglePetAutocast", -- Turns autocast on or off for a pet action -- /!\ protected
+"UseAction", -- Uses an action -- /!\ protected
+-- # ActionBar functions
+-- # Addon-related functions
+"InterfaceOptionsFrame_OpenToCategory", -- Opens the Interface Options window and displays a given panel within it -- /!\ blizzarduiframexml
+"InterfaceOptionsFrame_OpenToCategory", -- Opens the Interface Options window and displays a given panel within it -- /!\ blizzarduiframexml
+"InterfaceOptions_AddCategory", -- Registers a panel to be displayed in the Interface Options window -- /!\ blizzarduiframexml
+"InterfaceOptions_AddCategory", -- Registers a panel to be displayed in the Interface Options window -- /!\ blizzarduiframexml
+-- # Archaeology profession functions
+"RequestArtifactCompletionHistory", -- Queries the server for the player's artifact completion history -- /!\ server
+-- # Arena functions
+"ArenaTeam_GetTeamSizeID", -- Converts an arena team size to the appropriate numeric arena team identifier -- /!\ framexml
+-- # Auction functions
+"C_BlackMarket.RequestItems", -- Requests updated black market auction information from the server.
+"CancelAuction", -- Cancels an auction created by the player -- /!\ confirmationhardware
+"GetAuctionHouseDepositRate", -- Returns the deposit rate for the current auction house -- /!\ deprecated
+"GetBidderAuctionItems", -- Requests data from the server for the list of auctions bid on by the player -- /!\ server
+"GetOwnerAuctionItems", -- Requests data from the server for the list of auctions created by the player -- /!\ server
+"IsAuctionSortReversed", -- Returns whether a sort criterion is applied in reverse order -- /!\ deprecated
+"PlaceAuctionBid", -- Places a bid on (or buys out) an auction item -- /!\ confirmationhardware
+"QueryAuctionItems", -- Requests data from the server for the list of auctions meeting given search criteria -- /!\ server
+"SortAuctionItems", -- Sorts the auction house listing -- /!\ deprecated
+-- # Bank functions
+"EquipmentManager_UnpackLocation", -- Unpacks an inventory location bitfield into usable components -- /!\ framexml
+-- # Barbershop functions
+-- # Battle.net functions
+-- # Battlefield functions
+"AcceptBattlefieldPort", -- Accepts the offered teleport to a battleground/arena or leaves the battleground/arena or queue -- /!\ hardware
+"RequestBattlefieldScoreData", -- Requests battlefield score data from the server -- /!\ server
+"RequestBattlegroundInstanceInfo", -- Requests information about available instances of a battleground from the server -- /!\ server
+-- # Blizzard internal functions
+"GMRequestPlayerInfo", -- This is a Blizzard internal function -- /!\ internal
+"GetDebugStats", -- This is a Blizzard internal function -- /!\ internal
+"GetDebugZoneMap", -- This is a Blizzard internal function -- /!\ internal
+"GetGMStatus", -- This is a Blizzard internal function -- /!\ internal
+"GetMapDebugObjectInfo", -- This is a Blizzard internal function -- /!\ internal
+"GetNumMapDebugObjects", -- This is a Blizzard internal function -- /!\ internal
+"HasDebugZoneMap", -- This is a Blizzard internal function -- /!\ internal
+"IsDebugBuild", -- This is a Blizzard internal function -- /!\ internal
+"IsGMClient", -- This is a Blizzard internal function -- /!\ internal
+"ResetPerformanceValues", -- This is a Blizzard internal function -- /!\ internal
+"SetConsoleKey", -- This is a Blizzard internal function -- /!\ internal
+"SetLayoutMode", -- This is a Blizzard internal function -- /!\ internal
+"TargetDirectionEnemy", -- This is a Blizzard internal function -- /!\ internalprotected
+"TargetDirectionEnemy", -- This is a Blizzard internal function -- /!\ internalprotected
+"TargetDirectionFinished", -- This is a Blizzard internal function -- /!\ internalprotected
+"TargetDirectionFinished", -- This is a Blizzard internal function -- /!\ internalprotected
+"TargetDirectionFriend", -- This is a Blizzard internal function -- /!\ internalprotected
+"TargetDirectionFriend", -- This is a Blizzard internal function -- /!\ internalprotected
+"TeleportToDebugObject", -- This is a Blizzard internal function -- /!\ internal
+"ToggleCollision", -- This is a Blizzard internal function -- /!\ internal
+"ToggleCollisionDisplay", -- This is a Blizzard internal function -- /!\ internal
+"TogglePerformancePause", -- This is a Blizzard internal function -- /!\ internal
+"TogglePerformanceValues", -- This is a Blizzard internal function -- /!\ internal
+"TogglePlayerBounds", -- This is a Blizzard internal function -- /!\ internal
+"TogglePortals", -- This is a Blizzard internal function -- /!\ internal
+"ToggleTris", -- This is a Blizzard internal function -- /!\ internal
+"debugbreak", -- This is a Blizzard internal function -- /!\ internal
+"debugdump", -- This is a Blizzard internal function -- /!\ internal
+"debuginfo", -- This is a Blizzard internal function -- /!\ internal
+"debugload", -- This is a Blizzard internal function -- /!\ internal
+"debugprint", -- This is a Blizzard internal function -- /!\ internal
+"debugtimestamp", -- This is a Blizzard internal function -- /!\ internal
+-- # Buff functions
+"CancelItemTempEnchantment", -- Cancels a temporary weapon enchant -- /!\ protected
+"CancelShapeshiftForm", -- Cancels the current shapeshift form -- /!\ protected
+"CancelUnitBuff", -- Cancels a buff on the player -- /!\ hardwarenocombat
+-- # CVar functions
+-- # Calendar functions
+"CalendarGetDate", -- Returns the current date (in the server's time zone)
+"OpenCalendar", -- Queries the server for calendar status information -- /!\ server
+-- # Camera functions
+"CameraOrSelectOrMoveStart", -- Begins camera movement or selection (equivalent to left-clicking in the 3-D world) -- /!\ protected
+"CameraOrSelectOrMoveStop", -- Ends action initiated by [[docs/api/CameraOrSelectOrMoveStart|`CameraOrSelectOrMoveStart`]] -- /!\ protected
+-- # Channel functions
+"DisplayChannelOwner", -- Requests information from the server about a channel's owner -- /!\ server
+"EnumerateServerChannels", -- Returns the available server channel names
+"JoinChannelByName", -- This function is deprecated and should no longer be used -- /!\ deprecated
+"ListChannelByName", -- Requests the list of participants in a chat channel -- /!\ server
+"ListChannels", -- Requests a list of channels joined by the player -- /!\ server
+-- # Chat functions
+"ChatFrame_AddMessageEventFilter", -- Adds a function to filter or alter messages to the chat display system -- /!\ blizzarduiframexml
+"ChatFrame_AddMessageEventFilter", -- Adds a function to filter or alter messages to the chat display system -- /!\ blizzarduiframexml
+"ChatFrame_GetMessageEventFilters", -- Returns the list of filters registered for a chat event -- /!\ blizzarduiframexml
+"ChatFrame_GetMessageEventFilters", -- Returns the list of filters registered for a chat event -- /!\ blizzarduiframexml
+"ChatFrame_RemoveMessageEventFilter", -- Removes a previously set chat message filter -- /!\ blizzarduiframexml
+"ChatFrame_RemoveMessageEventFilter", -- Removes a previously set chat message filter -- /!\ blizzarduiframexml
+"ChatHistory_GetAccessID", -- Retrieve an [[docs/api_types#accessID|accessID]] for a combination of chatType and chatTarget -- /!\ blizzarduiframexmlframexml
+"ChatHistory_GetAccessID", -- Retrieve an [[docs/api_types#accessID|accessID]] for a combination of chatType and chatTarget -- /!\ blizzarduiframexmlframexml
+"ChatHistory_GetChatType", -- Retrieve information about an accessID -- /!\ blizzarduiframexml
+"ChatHistory_GetChatType", -- Retrieve information about an accessID -- /!\ blizzarduiframexml
+"RandomRoll", -- Initiates a public, server-side "dice roll" -- /!\ server
+"SendChatMessage", -- Sends a chat message -- /!\ server
+-- # Class resource functions
+"DestroyTotem", -- Destroys a specific totem (or ghoul) -- /!\ protected
+"TargetTotem", -- Targets one of the player's totems (or a Death Knight's ghoul) -- /!\ protected
+-- # Client control and information functions
+"CancelLogout", -- Cancels a pending logout or quit -- /!\ protected
+"ForceLogout", -- Forces the client to logout -- /!\ internal
+"GetGameTime", -- Returns the current realm (server) time
+"ReloadUI", -- Reloads the user interface -- /!\ hardware
+-- # Combat functions
+"AttackTarget", -- Begins auto-attack against the player's current target -- /!\ protected
+"StartAttack", -- Begins auto-attack against a specified target -- /!\ protected
+"StopAttack", -- Stops auto-attack if active -- /!\ protected
+-- # CombatLog functions
+-- # Commentator functions
+"CommentatorEnterInstance", -- This is a Blizzard internal function -- /!\ internal
+"CommentatorExitInstance", -- This is a Blizzard internal function -- /!\ internal
+"CommentatorFollowPlayer", -- This is a Blizzard internal function -- /!\ internal
+"CommentatorGetCamera", -- This is a Blizzard internal function -- /!\ internal
+"CommentatorGetCurrentMapID", -- This is a Blizzard internal function -- /!\ internal
+"CommentatorGetInstanceInfo", -- This is a Blizzard internal function -- /!\ internal
+"CommentatorGetMapInfo", -- This is a Blizzard internal function -- /!\ internal
+"CommentatorGetMode", -- This is a Blizzard internal function -- /!\ internal
+"CommentatorGetNumMaps", -- This is a Blizzard internal function -- /!\ internal
+"CommentatorGetNumPlayers", -- This is a Blizzard internal function -- /!\ internal
+"CommentatorGetPlayerInfo", -- This is a Blizzard internal function -- /!\ internal
+"CommentatorLookatPlayer", -- This is a Blizzard internal function -- /!\ internal
+"CommentatorSetCamera", -- This is a Blizzard internal function -- /!\ internal
+"CommentatorSetCameraCollision", -- This is a Blizzard internal function -- /!\ internal
+"CommentatorSetMapAndInstanceIndex", -- This is a Blizzard internal function -- /!\ internal
+"CommentatorSetMode", -- This is a Blizzard internal function -- /!\ internal
+"CommentatorSetMoveSpeed", -- This is a Blizzard internal function -- /!\ internal
+"CommentatorSetTargetHeightOffset", -- This is a Blizzard internal function -- /!\ internal
+"CommentatorStartWargame", -- This is a Blizzard internal function -- /!\ internal
+"CommentatorToggleMode", -- This is a Blizzard internal function -- /!\ internal
+"CommentatorUpdateMapInfo", -- This is a Blizzard internal function -- /!\ internal
+"CommentatorUpdatePlayerInfo", -- This is a Blizzard internal function -- /!\ internal
+"CommentatorZoomIn", -- This is a Blizzard internal function -- /!\ internal
+"CommentatorZoomOut", -- This is a Blizzard internal function -- /!\ internal
+-- # Companion functions
+-- # Complaint functions
+-- # Container functions
+"EquipmentManager_UnpackLocation", -- Unpacks an inventory location bitfield into usable components -- /!\ framexml
+"UseContainerItem", -- Activate (as with right-clicking) an item in one of the player's bags -- /!\ protected
+-- # Currency functions
+-- # Cursor functions
+-- # Debugging and Profiling functions
+"getprinthandler", -- Returns the function currently used for `print()` output -- /!\ framexml
+"print", -- Outputs a list of values (in the main chat window by default) -- /!\ framexml
+"print", -- Outputs a list of values (in the main chat window by default) -- /!\ framexml
+"setprinthandler", -- Sets a new function to be used for `print()` output -- /!\ framexml
+"tostringall", -- Alternative to `tostring()` for bulk conversion of values -- /!\ framexml
+-- # Deprecated functions
+"ReportBug", -- This function is deprecated and should no longer be used -- /!\ deprecated
+"ReportSuggestion", -- This function is deprecated and should no longer be used -- /!\ deprecated
+-- # Duel functions
+-- # Equipment Manager functions
+"EquipmentManager_UnpackLocation", -- Unpacks an inventory location bitfield into usable components -- /!\ framexml
+-- # Experience (XP) functions
+-- # Faction functions
+-- # Flyout button functions
+"GetFlyoutID", -- Returns the internal flyoutID for a given flyout index
+-- # GM Survey functions
+"GMSurveyNumAnswers", -- Returns the number of possible answers for a GM Survey question -- /!\ deprecated
+-- # GM Ticket functions
+"GMResponseResolve", -- Notifies the server that the player's GM ticket issue has been resolved -- /!\ server
+"GetGMStatus", -- This is a Blizzard internal function -- /!\ internal
+"GetGMTicket", -- Requests GM ticket status from the server -- /!\ server
+"GetGMTicketCategories", -- Returns a list of available GM ticket categories -- /!\ deprecated
+"NewGMTicket", -- Opens a new GM support ticket -- /!\ protected
+"Stuck", -- Uses the auto-unstuck feature -- /!\ protected
+"UpdateGMTicket", -- Updates the open GM ticket with new text -- /!\ protected
+-- # Glyph functions
+"GetNumGlyphSockets", -- Currently unused -- /!\ deprecated
+-- # Guild bank functions
+"QueryGuildBankLog", -- Requests the item transaction log for a guild bank tab from the server -- /!\ server
+"QueryGuildBankTab", -- Requests information about the contents of a guild bank tab from the server -- /!\ server
+"QueryGuildBankText", -- Requests guild bank tab info text from the server -- /!\ server
+-- # Guild functions
+"CloseGuildRoster", -- This function is deprecated and should no longer be used -- /!\ deprecated
+"GetTabardInfo", -- This function is deprecated and should no longer be used -- /!\ deprecated
+"GuildDemote", -- Reduces a guild member's rank by one -- /!\ deprecated
+"GuildInfo", -- Requests guild information from the server -- /!\ server
+"GuildInvite", -- Invites a character to join the player's guild -- /!\ hardware
+"GuildPromote", -- Increases a guild member's rank by one -- /!\ deprecated
+"GuildRoster", -- Requests guild roster information from the server -- /!\ server
+"QueryGuildEventLog", -- Requests guild event log information from the server -- /!\ server
+-- # Hyperlink functions
+-- # In-game movie playback functions
+-- # Inspect functions
+"HasInspectHonorData", -- Returns whether PvP honor and arena data for the currently inspected unit has been downloaded from the server
+"NotifyInspect", -- Marks a unit for inspection and requests talent data from the server -- /!\ server
+"RequestInspectHonorData", -- Requests PvP honor and arena data from the server for the currently inspected unit -- /!\ server
+-- # Instance functions
+"RequestRaidInfo", -- Requests information about saved instances from the server -- /!\ server
+-- # Inventory functions
+"EquipmentManager_UnpackLocation", -- Unpacks an inventory location bitfield into usable components -- /!\ framexml
+"UpdateInventoryAlertStatus", -- This is a Blizzard internal function -- /!\ internal
+"UseInventoryItem", -- Activate (as with right-clicking) an equipped item -- /!\ protected
+-- # Item Text functions
+-- # Item Upgrade functions
+-- # Item functions
+"GetExtendedItemInfo", -- This function is deprecated and should no longer be used -- /!\ deprecated
+"SpellTargetItem", -- Casts the spell currently awaiting a target on an item -- /!\ protected
+"UseItemByName", -- Uses an arbitrary item (optionally on a specified unit) -- /!\ protected
+-- # Keybind functions
+-- # Keyboard functions
+-- # Knowledge-base functions
+"KBArticle_BeginLoading", -- Requests a specific knowledge base article from the server -- /!\ server
+"KBQuery_BeginLoading", -- Queries the knowledge base server for articles -- /!\ server
+"KBSystem_GetServerNotice", -- Returns the text of the knowledge base server system notice
+"KBSystem_GetServerStatus", -- Returns the knowledge base server system status message
+-- # Limited play time functions
+-- # Locale-specific functions
+-- # Looking for group functions
+"GetLFGMode", -- Provides information about the LFG status of the player. -- /!\ framexml
+"RequestLFDPlayerLockInfo", -- Requests instance lockout and Call to Arms dungeon reward information. -- /!\ server
+-- # Loot functions
+-- # Lua library functions
+"acos", -- Alternative to math.acos, using degrees instead of radians -- /!\ framexml
+"acos", -- Alternative to math.acos, using degrees instead of radians -- /!\ framexml
+"asin", -- Alternative to math.asin, using degrees instead of radians -- /!\ framexml
+"asin", -- Alternative to math.asin, using degrees instead of radians -- /!\ framexml
+"atan", -- Alternative to math.atan, using degrees instead of radians -- /!\ framexml
+"atan", -- Alternative to math.atan, using degrees instead of radians -- /!\ framexml
+"atan2", -- This function is not yet documented -- /!\ framexml
+"cos", -- Alternative to math.cos, using degrees instead of radians -- /!\ framexml
+"foreach", -- This function is deprecated and should no longer be used -- /!\ deprecatedluaapi
+"foreachi", -- This function is deprecated and should no longer be used -- /!\ deprecatedluaapi
+"gcinfo", -- Returns the total Lua memory usage -- /!\ deprecatedluaapi
+"getn", -- This function is deprecated and should no longer be used -- /!\ deprecatedluaapi
+"pcall", -- Executes a function in protected mode -- /!\ luaapi
+"sin", -- Alternative to math.sin, using degrees instead of radians -- /!\ framexml
+"tContains", -- This function is not yet documented -- /!\ framexml
+"tDelete", -- This function is not yet documented -- /!\ framexml
+"tan", -- Alternative to math.tan, using degrees instead of radians -- /!\ framexml
+"xpcall", -- Executes a function in protected mode with a custom error handler -- /!\ luaapi
+-- # Mac client functions
+"MovieRecording_Cancel", -- Cancels video recording and compression -- /!\ maconly
+"MovieRecording_DataRate", -- Returns the data rate required for a given set of video recording parameters -- /!\ maconly
+"MovieRecording_DeleteMovie", -- Deletes an uncompressed movie -- /!\ maconly
+"MovieRecording_GetAspectRatio", -- Returns the aspect ratio of the game display -- /!\ maconly
+"MovieRecording_GetMovieFullPath", -- Returns a path to the movie currently being recorded or compressed -- /!\ maconly
+"MovieRecording_GetProgress", -- Returns information about movie compression progress -- /!\ maconly
+"MovieRecording_GetTime", -- Returns the amount of time since video recording was last started -- /!\ maconly
+"MovieRecording_GetViewportWidth", -- Returns the current width of the game display -- /!\ maconly
+"MovieRecording_IsCodecSupported", -- Returns whether a video codec is supported on the current system -- /!\ maconly
+"MovieRecording_IsCompressing", -- Returns whether a movie file is currently being compressed -- /!\ maconly
+"MovieRecording_IsCursorRecordingSupported", -- Returns whether the current system supports recording the mouse cursor in movies -- /!\ maconly
+"MovieRecording_IsRecording", -- Returns whether movie recording is currently in progress -- /!\ maconly
+"MovieRecording_MaxLength", -- Returns the maximum length of recorded video for a given set of video recording parameters -- /!\ maconly
+"MovieRecording_QueueMovieToCompress", -- Queues an uncompressed movie for compression -- /!\ maconly
+"MovieRecording_SearchUncompressedMovie", -- Enables or disables a search for uncompressed movies -- /!\ maconly
+"MovieRecording_Toggle", -- Begins or ends video recording -- /!\ maconly
+"MovieRecording_ToggleGUI", -- Enables or disables inclusion of UI elements in a video recording -- /!\ maconly
+"MusicPlayer_BackTrack", -- Causes iTunes to return to the previous track played -- /!\ protectedmaconly
+"MusicPlayer_BackTrack", -- Causes iTunes to return to the previous track played -- /!\ protectedmaconly
+"MusicPlayer_NextTrack", -- Causes iTunes to play the next track in sequence -- /!\ protectedmaconly
+"MusicPlayer_NextTrack", -- Causes iTunes to play the next track in sequence -- /!\ protectedmaconly
+"MusicPlayer_PlayPause", -- Causes iTunes to start or pause playback -- /!\ protectedmaconly
+"MusicPlayer_PlayPause", -- Causes iTunes to start or pause playback -- /!\ protectedmaconly
+"MusicPlayer_VolumeDown", -- Causes iTunes to lower its playback volume -- /!\ protectedmaconly
+"MusicPlayer_VolumeDown", -- Causes iTunes to lower its playback volume -- /!\ protectedmaconly
+"MusicPlayer_VolumeUp", -- Causes iTunes to raise its playback volume -- /!\ protectedmaconly
+"MusicPlayer_VolumeUp", -- Causes iTunes to raise its playback volume -- /!\ protectedmaconly
+-- # Macro functions
+"RunMacro", -- Runs a macro -- /!\ protected
+"RunMacroText", -- Runs arbitrary text as a macro -- /!\ protected
+"StopMacro", -- Stops execution of a running macro -- /!\ protected
+-- # Mail functions
+"CheckInbox", -- Requests information on the player's mailbox contents from the server -- /!\ server
+"GetNumPackages", -- This function is deprecated and should no longer be used -- /!\ deprecated
+"GetNumStationeries", -- Returns the number of available stationery types -- /!\ internal
+"GetPackageInfo", -- This function is deprecated and should no longer be used -- /!\ deprecated
+"GetSelectedStationeryTexture", -- Returns the currently selected stationery type -- /!\ internal
+"GetStationeryInfo", -- Returns information about a stationery type -- /!\ internal
+"SelectPackage", -- This function is deprecated and should no longer be used -- /!\ deprecated
+"SelectStationery", -- Selects a given stationery for usage when sending mail -- /!\ internal
+-- # Map functions
+"InitWorldMapPing", -- Initializes the frame used to display the character location "ping" on the World Map -- /!\ internal
+-- # Merchant functions
+-- # Modified click functions
+-- # Money functions
+"SetTradeMoney", -- Offers an amount of money for trade -- /!\ hardware
+-- # Movement functions
+"AscendStop", -- Stops movement initiated by [[docs/api/JumpOrAscendStart|`JumpOrAscendStart`]] -- /!\ protected
+"DescendStop", -- Stops movement initiated by [[docs/api/SitStandOrDescendStart|`SitStandOrDescendStart`]] -- /!\ protected
+"InteractUnit", -- Interacts with (as with right-clicking on) a unit -- /!\ protected
+"JumpOrAscendStart", -- Causes the player character to jump (or begins ascent if swimming or flying) -- /!\ protected
+"MoveAndSteerStart", -- Begins moving the player character forward while steering via mouse movement -- /!\ protected
+"MoveAndSteerStop", -- Ends movement initiated by [[docs/api/MoveAndSteerStart|`MoveAndSteerStart`]] -- /!\ protected
+"MoveBackwardStart", -- Begins moving the player character backward -- /!\ protected
+"MoveBackwardStop", -- Ends movement initiated by [[docs/api/MoveBackwardStart|`MoveBackwardStart`]] -- /!\ protected
+"MoveForwardStart", -- Begins moving the player character forward -- /!\ protected
+"MoveForwardStop", -- Ends movement initiated by [[docs/api/MoveForwardStart|`MoveForwardStart`]] -- /!\ protected
+"PitchDownStart", -- Begins adjusting the player character's angle of vertical movement downward -- /!\ protected
+"PitchDownStop", -- Ends movement initiated by [[docs/api/PitchDownStart|`PitchDownStart`]] -- /!\ protected
+"PitchUpStart", -- Begins adjusting the player character's angle of vertical movement upward -- /!\ protected
+"PitchUpStop", -- Ends movement initiated by [[docs/api/PitchUpStart|`PitchUpStart`]] -- /!\ protected
+"SitStandOrDescendStart", -- Causes the player character to sit down if standing and vice versa (or begins descent if swimming or flying) -- /!\ protected
+"StrafeLeftStart", -- Begins moving the player character sideways to his or her left -- /!\ protected
+"StrafeLeftStop", -- Ends movement initiated by [[docs/api/StrafeLeftStart|`StrafeLeftStart`]] -- /!\ protected
+"StrafeRightStart", -- Begins moving the player character sideways to his or her right -- /!\ protected
+"StrafeRightStop", -- Ends movement initiated by [[docs/api/StrafeRightStart|`StrafeRightStart`]] -- /!\ protected
+"ToggleAutoRun", -- Starts or stops the player character automatically moving forward -- /!\ protected
+"ToggleRun", -- Switches the character's ground movement mode between running and walking -- /!\ protected
+"TurnLeftStart", -- Begins turning the player character to the left -- /!\ protected
+"TurnLeftStop", -- Ends movement initiated by [[docs/api/TurnLeftStart|`TurnLeftStart`]] -- /!\ protected
+"TurnOrActionStart", -- Begins character steering or interaction (equivalent to right-clicking in the 3-D world) -- /!\ protected
+"TurnOrActionStop", -- Ends action initiated by [[docs/api/TurnOrActionStart|`TurnOrActionStart`]] -- /!\ protected
+"TurnRightStart", -- Begins turning the player character to the right -- /!\ protected
+"TurnRightStop", -- Ends movement initiated by [[docs/api/TurnRightStart|`TurnRightStart`]] -- /!\ protected
+-- # NPC "Gossip" Dialog functions
+-- # Objectives tracking functions
+"UseQuestLogSpecialItem", -- Uses the item associated with a current quest -- /!\ protected
+-- # Party functions
+"ClearPartyAssignment", -- Removes a group role assignment from a member of the player's party or raid -- /!\ protected
+"SetPartyAssignment", -- Assigns a group role to a member of the player's party or raid -- /!\ protected
+"TargetNearestPartyMember", -- Cycles targets through nearby party members -- /!\ protected
+-- # Pet Stable functions
+-- # Pet battles functions
+-- # Pet functions
+"CastPetAction", -- Casts a pet action on a specific target -- /!\ protected
+"DestroyTotem", -- Destroys a specific totem (or ghoul) -- /!\ protected
+"DisableSpellAutocast", -- Disables automatic casting of a pet spell -- /!\ protected
+"EnableSpellAutocast", -- Enables automatic casting of a pet spell -- /!\ protected
+"PetAggressiveMode", -- Enables aggressive mode for the player's pet -- /!\ protected
+"PetAttack", -- Instructs the pet to attack -- /!\ protected
+"PetDefensiveMode", -- Enables defensive mode for the player's pet -- /!\ protected
+"PetFollow", -- Instructs the pet to follow the player -- /!\ protected
+"PetMoveTo", -- Commands the player's pet to move to the targeted destination -- /!\ protected
+"PetPassiveMode", -- Enables passive mode for the player's pet -- /!\ protected
+"PetStopAttack", -- Instructs the pet to stop attacking -- /!\ protected
+"PetWait", -- Instructs the pet to stay at its current location -- /!\ protected
+"TargetTotem", -- Targets one of the player's totems (or a Death Knight's ghoul) -- /!\ protected
+"TogglePetAutocast", -- Turns autocast on or off for a pet action -- /!\ protected
+-- # Pet journal functions
+-- # Petition functions
+-- # Player information functions
+"GetTimeToWellRested", -- This function is deprecated and should no longer be used -- /!\ deprecated
+"PortGraveyard", -- This function is not yet documented -- /!\ protected
+"SetCurrentTitle", -- Changes a player's displayed title -- /!\ hardware
+"UseHearthstone", -- Attempts to use the player's Hearthstone -- /!\ protected
+-- # PvP functions
+"RequestPVPOptionsEnabled", -- This function is not yet documented -- /!\ server
+"RequestPVPRewards", -- Requests informations about Conquest Point cap from the server -- /!\ server
+-- # Quest functions
+"GetQuestDifficultyColor", -- Returns a table of color values indicating the difficulty of a quest's level as compared to the player's -- /!\ blizzarduiframexml
+"GetQuestDifficultyColor", -- Returns a table of color values indicating the difficulty of a quest's level as compared to the player's -- /!\ blizzarduiframexml
+"GetQuestID", -- Returns the internal ID of a quest featured in the currently active NPC dialogue (available after a QUEST_DETAIL event)
+"UseQuestLogSpecialItem", -- Uses the item associated with a current quest -- /!\ protected
+-- # Raid functions
+"ClearPartyAssignment", -- Removes a group role assignment from a member of the player's party or raid -- /!\ protected
+"SetPartyAssignment", -- Assigns a group role to a member of the player's party or raid -- /!\ protected
+-- # Realm functions
+"GetRealmName", -- Returns the name of the player's realm (server name)
+"IsVoiceChatAllowedByServer", -- Returns whether voice chat is supported by the realm server
+-- # Recruit-a-friend functions
+-- # Secure execution utility functions
+"InCombatLockdown", -- Returns whether the user interface is protected due to combat
+"forceinsecure", -- Causes the current execution path to continue outside the secure environment -- /!\ internal
+"securecall", -- Calls a function without tainting the execution path -- /!\ internal
+-- # Skill functions
+-- # Social functions
+"SendWho", -- Requests a list of characters meeting given search criteria from the server -- /!\ server
+"ShowFriends", -- Requests friends/ignore list information from the server -- /!\ server
+-- # Socketing functions
+-- # Sound functions
+-- # Spell functions
+"CastSpell", -- Casts a from the spellbook -- /!\ protected
+"CastSpellByID", -- Casts a spell specified by id (optionally on a specified unit) -- /!\ protected
+"CastSpellByName", -- Casts a spell specified by name (optionally on a specified unit) -- /!\ protected
+"DisableSpellAutocast", -- Disables automatic casting of a pet spell -- /!\ protected
+"EnableSpellAutocast", -- Enables automatic casting of a pet spell -- /!\ protected
+"SpellStopCasting", -- Stops casting or targeting the spell in progress -- /!\ protected
+"SpellStopTargeting", -- Cancels the spell currently awaiting a target -- /!\ protected
+"SpellTargetItem", -- Casts the spell currently awaiting a target on an item -- /!\ protected
+"SpellTargetUnit", -- Casts the spell currently awaiting a target on a unit -- /!\ protected
+-- # Stance/Shapeshift functions
+"CancelShapeshiftForm", -- Cancels the current shapeshift form -- /!\ protected
+"CastShapeshiftForm", -- Casts an ability on the stance/shapeshift bar -- /!\ protected
+-- # Stat information functions
+-- # Stopwatch functions
+"Stopwatch_Clear", -- This function is not yet documented -- /!\ framexml
+"Stopwatch_FinishCountdown", -- This function is not yet documented -- /!\ framexml
+"Stopwatch_IsPlaying", -- Returns True/False if Stop Watch is running. -- /!\ framexml
+"Stopwatch_Pause", -- This function is not yet documented -- /!\ framexml
+"Stopwatch_Play", -- This function is not yet documented -- /!\ framexml
+"Stopwatch_StartCountdown", -- Sets the Stop Watches timer value -- /!\ framexml
+"Stopwatch_Toggle", -- Toggles visibility of the StopwatchFrame -- /!\ framexml
+-- # Summoning functions
+-- # Talent functions
+-- # Targeting functions
+"AssistUnit", -- Targets the unit targeted by another unit -- /!\ protected
+"ClearFocus", -- Clears the player's focus unit -- /!\ protected
+"ClearTarget", -- Clears the player's current target -- /!\ protected
+"FocusUnit", -- Changes the `focus` unitID to refer to a new unit -- /!\ protected
+"SpellTargetUnit", -- Casts the spell currently awaiting a target on a unit -- /!\ protected
+"TargetLastEnemy", -- Targets the most recently targeted enemy unit -- /!\ protected
+"TargetLastFriend", -- Targets the most recently targeted friendly unit -- /!\ protected
+"TargetLastTarget", -- Targets the most recently targeted unit -- /!\ protected
+"TargetNearest", -- Cycles targets through nearest units regardless of reaction/affiliation -- /!\ protected
+"TargetNearestEnemy", -- Cycles your target through the nearest enemy units -- /!\ protected
+"TargetNearestEnemyPlayer", -- Cycles targets through nearby enemy player units -- /!\ protected
+"TargetNearestFriend", -- Cycles targets through nearby friendly units -- /!\ protected
+"TargetNearestFriendPlayer", -- Cycles targets through nearby friendly player units -- /!\ protected
+"TargetNearestPartyMember", -- Cycles targets through nearby party members -- /!\ protected
+"TargetNearestRaidMember", -- Cycles targets through nearby raid members -- /!\ protected
+"TargetUnit", -- Targets a unit -- /!\ protected
+-- # Taxi/Flight functions
+-- # Threat functions
+-- # Tracking functions
+-- # Trade functions
+"BeginTrade", -- This function is deprecated and should no longer be used -- /!\ deprecated
+"SetTradeMoney", -- Offers an amount of money for trade -- /!\ hardware
+-- # Tradeskill functions
+-- # Trainer functions
+"OpenTrainer", -- This function is deprecated and should no longer be used -- /!\ deprecated
+-- # Transmogrification functions
+-- # Tutorial functions
+-- # UI/Visual functions
+"message", -- Shows a message box containing the given text -- /!\ reviewframexml
+-- # Unit functions
+"GetUnitName", -- Returns a string summarizing a unit's name and server -- /!\ blizzarduiframexml
+"GetUnitName", -- Returns a string summarizing a unit's name and server -- /!\ blizzarduiframexml
+"GetUnitName", -- Returns a string summarizing a unit's name and server -- /!\ blizzarduiframexml
+"UnitIsSameServer", -- Returns whether two units are from the same server
+"UnitMana", -- This function is deprecated and should no longer be used -- /!\ deprecated
+"UnitManaMax", -- This function is deprecated and should no longer be used -- /!\ deprecated
+-- # Utility functions
+"RequestTimePlayed", -- Requests information from the server about the player character's total time spent online -- /!\ server
+"SecondsToTime", -- Returns a description of an amount of time in appropriate units -- /!\ blizzarduiframexml
+"SecondsToTime", -- Returns a description of an amount of time in appropriate units -- /!\ blizzarduiframexml
+"getglobal", -- Returns the value of a global variable -- /!\ framexml
+"setglobal", -- Sets a global variable to a specified value -- /!\ framexml
+-- # Vehicle functions
+"IsUsingVehicleControls", -- This is a Blizzard internal function -- /!\ internal
+"IsVehicleAimPowerAdjustable", -- This is a Blizzard internal function -- /!\ internal
+"VehicleAimDownStart", -- Starts adjusting vehicle aim downward -- /!\ protected
+"VehicleAimDownStop", -- Stops adjusting vehicle aim downward -- /!\ protected
+"VehicleAimGetNormPower", -- This is a Blizzard internal function -- /!\ internal
+"VehicleAimSetNormPower", -- This is a Blizzard internal function -- /!\ internal
+"VehicleAimUpStart", -- Starts adjusting vehicle aim upward -- /!\ protected
+"VehicleAimUpStop", -- Stops adjusting vehicle aim upward -- /!\ protected
+-- # Video functions
+"IsDesaturateSupported", -- Returns whether the current hardware supports desaturated textures
+-- # Voice functions
+"IsVoiceChatAllowedByServer", -- Returns whether voice chat is supported by the realm server
+"VoiceChat_ActivatePrimaryCaptureCallback", -- This function is deprecated and should no longer be used -- /!\ deprecated
+"VoiceChat_StartCapture", -- This function is deprecated and should no longer be used -- /!\ deprecated
+"VoiceChat_StopCapture", -- This function is deprecated and should no longer be used -- /!\ deprecated
+"VoicePushToTalkStart", -- Used internally to start talking, when push-to-talk is active in voice chat. -- /!\ deprecated
+"VoicePushToTalkStart", -- Used internally to start talking, when push-to-talk is active in voice chat. -- /!\ deprecated
+"VoicePushToTalkStop", -- Used internally to stop talking, when push-to-talk is active in voice chat -- /!\ deprecated
+"VoicePushToTalkStop", -- Used internally to stop talking, when push-to-talk is active in voice chat -- /!\ deprecated
+-- # Void storage functions
+-- # Wargame functions
+"CanInitiateWarGame", -- This is a Blizzard internal function -- /!\ internal
+"CommentatorStartWargame", -- This is a Blizzard internal function -- /!\ internal
+"GetWarGameQueueStatus", -- This is a Blizzard internal function -- /!\ internal
+"StartWarGame", -- This is a Blizzard internal function -- /!\ internal
+"WarGameRespond", -- This is a Blizzard internal function -- /!\ internal
+-- # Zone information functions
+-- # _(API_CAT_CHALLENGE)
+-- # _(API_CAT_EJ)
+-- # _(API_CAT_GARRISON)
+-- # _(API_CAT_MOUNT)
+-- # _(API_CAT_NEWITEMS)
+-- # _(API_CAT_PREMADE)
+-- # _(API_CAT_SCENARIO)
+-- # _(API_CAT_TOY)
+"UseToy", -- Use a Toy -- /!\ protected
+"UseToyByName", -- Activates a toy from the Toy Box -- /!\ internal
+-- # Uncategorized functions
