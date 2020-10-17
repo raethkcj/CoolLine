@@ -1,12 +1,11 @@
 local CoolLine = CreateFrame("Frame", "CoolLine", UIParent)
-
 CoolLine.MainFrame = CoolLine
 
 CoolLine:SetScript("OnEvent", function(this, event, ...)
 	this[event](this, ...)
 end)
 
-local IS_WOW_8 = GetBuildInfo():match("^8")
+local IS_RETAIL = GetBuildInfo():match("^9")
 local IS_WOW_CLASSIC = GetBuildInfo():match("^1")
 
 local smed = LibStub("LibSharedMedia-3.0")
@@ -234,7 +233,7 @@ function CoolLine:ADDON_LOADED(a1)
 			self.bg:SetTexCoord(0,1, 0,1)
 		end
 
-		self.border = self.border or CreateFrame("Frame", nil, self)
+		self.border = self.border or CreateFrame("Frame", nil, self, "BackdropTemplate")
 		self.border:SetPoint("TOPLEFT", -db.borderinset, db.borderinset) -- Implemented 'insets'
 		self.border:SetPoint("BOTTOMRIGHT", db.borderinset, -db.borderinset) -- Implemented 'insets'
 
@@ -306,7 +305,6 @@ end
 function CoolLine:PLAYER_LOGIN()
 --------------------------------
 	self.PLAYER_LOGIN = nil
-
 	self:RegisterEvent("SPELLS_CHANGED")
 	self:RegisterEvent("SPELL_UPDATE_COOLDOWN")
 	self:RegisterEvent("SPELL_UPDATE_CHARGES")
@@ -451,7 +449,7 @@ local function NewCooldown(name, icon, endtime, isplayer)
 	if not f then
 		f = f or tremove(frames)
 		if not f then
-			f = CreateFrame("Frame", nil, CoolLine.border)
+			f = CreateFrame("Frame", nil, CoolLine.border, "BackdropTemplate")
 			f:SetBackdrop(iconback)
 			f.icon = f:CreateTexture(nil, "ARTWORK")
 			f.icon:SetTexCoord(0.07, 0.93, 0.07, 0.93)
@@ -483,12 +481,11 @@ CoolLine.NewCooldown, CoolLine.ClearCooldown = NewCooldown, ClearCooldown
 do  -- cache spells that have a cooldown
 	local GetSpellBookItemName, GetSpellBookItemInfo, GetSpellBaseCooldown, GetSpellCharges
 		= GetSpellBookItemName, GetSpellBookItemInfo, GetSpellBaseCooldown, GetSpellCharges
-
 	local function CacheBook(btype)
 		local lastID
 		local sb = spells[btype]
 
-		if IS_WOW_8 then
+		if IS_RETAIL then
 			local _, _, offset, numSpells = GetSpellTabInfo(2)
 			for i = 1, offset + numSpells do
 				local spellName = GetSpellBookItemName(i, btype)
@@ -692,7 +689,7 @@ function CoolLine:PET_BAR_UPDATE_COOLDOWN()
 		local start, duration, enable = GetPetActionCooldown(i)
 		if enable == 1 then
 			local name, _, texture
-			if IS_WOW_8 then
+			if IS_RETAIL then
 				name, texture = GetPetActionInfo(i)
 			else
 				name, _, texture = GetPetActionInfo(i)
@@ -766,7 +763,7 @@ local failborder
 ----------------------------------------------------
 function CoolLine:UNIT_SPELLCAST_FAILED(unit, spell, id8)
 ----------------------------------------------------
-	if IS_WOW_8 then
+	if IS_RETAIL then
 		spell = GetSpellInfo(id8) -- TEMPORARY, need to switch to using spell IDs throughout
 	end
 
@@ -776,7 +773,7 @@ function CoolLine:UNIT_SPELLCAST_FAILED(unit, spell, id8)
 		if frame.name == spell then
 			if frame.endtime - GetTime() > 1 then
 				if not failborder then
-					failborder = CreateFrame("Frame", nil, CoolLine.border)
+					failborder = CreateFrame("Frame", nil, CoolLine.border, "BackdropTemplate")
 					failborder:SetBackdrop(iconback)
 					failborder:SetBackdropColor(1, 0, 0, 0.9)
 					failborder:Hide()
