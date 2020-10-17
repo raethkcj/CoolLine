@@ -5,8 +5,23 @@ CoolLine:SetScript("OnEvent", function(this, event, ...)
 	this[event](this, ...)
 end)
 
-local IS_RETAIL = GetBuildInfo():match("^9")
-local IS_WOW_CLASSIC = GetBuildInfo():match("^1")
+local current_version = tonumber(string.sub(GetBuildInfo(), 1, 1))
+local supported_retail_version = 9
+local supported_classic_version = 1
+local IS_RETAIL = current_version == supported_retail_version
+local IS_WOW_CLASSIC = current_version == supported_classic_version
+if not IS_RETAIL and not IS_WOW_CLASSIC then
+	print("CoolLine hasn't been updated to support WoW v"..GetBuildInfo())
+	print("Please file any bugs you find @ https://github.com/LoneWanderer-GH/CoolLine/issues")
+	if current_version >= supported_retail_version then
+		print("Assuming unsupported version is retail.")
+		IS_RETAIL = true
+	end
+	if current_version < supported_retail_version then
+		print("Assuming unsupported version is classic.")
+		IS_WOW_CLASSIC = true
+	end
+end
 
 local smed = LibStub("LibSharedMedia-3.0")
 
