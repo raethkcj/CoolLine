@@ -19,12 +19,12 @@ jobs:
     - uses: BigWigsMods/packager@master
       name: Build Retail using BigWigsMods/packager@master NO UPLOAD
       with:
-        args: release.sh -d -l
+        args: -dl
 
     - uses: BigWigsMods/packager@master
       name: Build Classic using BigWigsMods/packager@master NO UPLOAD
       with:
-        args: release.sh -d -l -g 1.13.3
+        args: -dl -g 1.13.5
 
     - name: Check created files
       shell: bash
