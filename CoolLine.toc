@@ -9,7 +9,7 @@
 ## Title: CoolLine
 ## Notes: Shows cooldowns on a single bar. |cff00b3ff(Classic compatible)|r by LoneWanderer-GH
 
-## Author: TotalPackage, Phanx, LoneWanderer-GH for first classic port
+## Author: TotalPackage, Phanx, LoneWanderer-GH for first classic port, with contributions from: https://github.com/capoferro
 
 ## X-Curse-Project-ID: 356973
 
