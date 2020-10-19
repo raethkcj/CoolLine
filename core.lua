@@ -509,7 +509,7 @@ do
         local sb = spells[btype]
 
         if IS_RETAIL_RELEASE then
-            local offsets, numTabs
+            local _, numTabs
             numTabs = GetNumSpellTabs()
             for i = 1, numTabs do
                 local _, _, offset, numSpells = GetSpellTabInfo(i)
@@ -559,7 +559,7 @@ do
 				end
 			end
         elseif IS_CLASSIC then
-            local offsets, numTabs
+            local _, numTabs
             numTabs = GetNumSpellTabs()
             for i = 1, numTabs do
                 local _, _, offset, numSpells = GetSpellTabInfo(i)
