@@ -1,18 +1,38 @@
-local build_toc_version                                     = select(4, GetBuildInfo())
-local IS_RETAIL_RELEASE                                     = (90000 <= build_toc_version and build_toc_version <= 99999)
-local IS_CLASSIC                                            = (build_toc_version <= 19999)
-local AddonBackdropTemplate = nil
-if IS_RETAIL_RELEASE then
-    AddonBackdropTemplate = "BackdropTemplate"
-end
+local ORANGEY, LIGHTRED             = '|cffFF4500', '|cffff6060'
+local build_toc_version             = select(4, GetBuildInfo())
+-- version numbering is X.XX.XX shorten in param 4 as XXXXX
+local SUPPORTED_RETAIL_VERSION      = 90000
+local MAX_SUPPORTED_RETAIL_VERSION  = 90099
+local MAX_SUPPORTED_CLASSIC_VERSION = 19999
+local IS_RETAIL_RELEASE             = (SUPPORTED_RETAIL_VERSION <= build_toc_version and build_toc_version <= MAX_SUPPORTED_RETAIL_VERSION)
+local IS_CLASSIC                    = (build_toc_version <= MAX_SUPPORTED_CLASSIC_VERSION)
+local AddonBackdropTemplate         = nil
 
-local CoolLine     = CreateFrame("Frame", "CoolLine", UIParent)
-
-CoolLine.MainFrame = CoolLine
+local CoolLine                      = CreateFrame("Frame", "CoolLine", UIParent)
+CoolLine.MainFrame                  = CoolLine
 
 CoolLine:SetScript("OnEvent", function(this, event, ...)
     this[event](this, ...)
 end)
+
+if not IS_RETAIL_RELEASE and not IS_CLASSIC then
+    local version, build, date, tocversion = GetBuildInfo()
+    print(format("!!! %sBEWARE %s!!!!", LIGHTRED, "|r"))
+    print(format("%sCoolLine hasn't been updated to support WoW v |r%s - %sbuild|r %s- %sdate|r %s - %sversion number|r %s", ORANGEY, version, ORANGEY, build, ORANGEY, date, ORANGEY, tocversion))
+    print(format("%sPlease file any bugs you find @ https://github.com/LoneWanderer-GH/CoolLine/issues", ORANGEY))
+    print(format("%sPlease be precise and provide as much intel as needed (PTR realm, release, beta etc.)", ORANGEY))
+    if build_toc_version > MAX_SUPPORTED_RETAIL_VERSION then
+        print(format("%sAssuming unsupported version is retail (%d)", LIGHTRED, MAX_SUPPORTED_RETAIL_VERSION))
+        IS_RETAIL_RELEASE = true
+    elseif build_toc_version > MAX_SUPPORTED_CLASSIC_VERSION then
+        print(format("%sAssuming unsupported version is classic (%d)", LIGHTRED, MAX_SUPPORTED_CLASSIC_VERSION))
+        IS_CLASSIC = true
+    end
+end
+
+if IS_RETAIL_RELEASE then
+    AddonBackdropTemplate = "BackdropTemplate"
+end
 
 local smed                                                  = LibStub("LibSharedMedia-3.0")
 
@@ -308,7 +328,6 @@ end
 function CoolLine:PLAYER_LOGIN()
     --------------------------------
     self.PLAYER_LOGIN = nil
-
     self:RegisterEvent("SPELLS_CHANGED")
     self:RegisterEvent("SPELL_UPDATE_COOLDOWN")
     self:RegisterEvent("SPELL_UPDATE_CHARGES")
@@ -485,7 +504,6 @@ CoolLine.NewCooldown, CoolLine.ClearCooldown = NewCooldown, ClearCooldown
 do
     -- cache spells that have a cooldown
     local GetSpellBookItemName, GetSpellBookItemInfo, GetSpellBaseCooldown, GetSpellCharges = GetSpellBookItemName, GetSpellBookItemInfo, GetSpellBaseCooldown, GetSpellCharges
-
     local function CacheBook(btype)
         local lastID
         local sb = spells[btype]
