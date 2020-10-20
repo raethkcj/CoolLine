@@ -18,7 +18,8 @@ end)
 if not IS_RETAIL_RELEASE and not IS_CLASSIC then
     local version, build, date, tocversion = GetBuildInfo()
     print(format("!!! %sBEWARE %s!!!!", LIGHTRED, "|r"))
-    print(format("%sCoolLine hasn't been updated to support WoW v |r%s - %sbuild|r %s- %sdate|r %s - %sversion number|r %s", ORANGEY, version, ORANGEY, build, ORANGEY, date, ORANGEY, tocversion))
+    local coolline_version = "@project-version@"
+    print(format("%sCoolLine v%s hasn't been updated to support WoW v |r%s - %sbuild|r %s- %sdate|r %s - %sversion number|r %s", ORANGEY, coolline_version, version, ORANGEY, build, ORANGEY, date, ORANGEY, tocversion))
     print(format("%sPlease file any bugs you find @ https://github.com/LoneWanderer-GH/CoolLine/issues", ORANGEY))
     print(format("%sPlease be precise and provide as much intel as needed (PTR realm, release, beta etc.)", ORANGEY))
     if build_toc_version > MAX_SUPPORTED_RETAIL_VERSION then
