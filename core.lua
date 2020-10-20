@@ -532,7 +532,7 @@ do
                             end
                         end
                     end
-                elseif spellID and spellType == "SPELL" and spellID ~= lastID then
+                elseif spellID and (spellType == "SPELL" or spellType == "PETACTION") and spellID ~= lastID then
                     -- Base spell = slot ID + name from slot ID
                     -- Real spell = ID from slot name + name from slot name
                     -- For the purposes of CoolLine we only care about the real spell.
