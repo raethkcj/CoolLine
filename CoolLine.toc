@@ -6,10 +6,17 @@
 #@end-non-retail@
 ## Version: @project-version@
 
-## Title: CoolLine
-## Notes: Shows cooldowns on a single bar. |cff00b3ff(Classic compatible)|r by LoneWanderer-GH
+## Title: |cFF22B14CCoolLine v@project-version@
 
-## Author: TotalPackage, Phanx, LoneWanderer-GH for first classic port, with contributions from: https://github.com/capoferro
+#@retail@
+## Notes: Shows cooldowns on a single bar. |cff00b3ff v@project-version@|r modifications by |cff00ffdaLoneWanderer-GH
+#@end-retail@
+#@non-retail@
+# ## Notes: Shows cooldowns on a single bar. |cff00b3ff v@project-version@ (Classic)|r modifications by |cff00ffdaLoneWanderer-GH
+#@end-non-retail@
+
+
+## Author: TotalPackage, Phanx, |cff00ffdaLoneWanderer-GH|r with contributions from |cFF22B14Ccapoferro
 
 ## X-Curse-Project-ID: 356973
 
