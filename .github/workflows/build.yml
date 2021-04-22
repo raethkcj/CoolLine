@@ -17,12 +17,12 @@ jobs:
     - uses: BigWigsMods/packager@master
       name: Build Retail and upload to CurseForge
       with:
-        args: -l
+        args: -l -g retail
 
     - uses: BigWigsMods/packager@master
       name: Build Classic and upload to CurseForge
       with:
-        args: -l -g 1.13.5
+        args: -l -g classic
 
     env:
       CF_API_KEY: ${{ secrets.CF_API_KEY }}
