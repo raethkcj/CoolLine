@@ -1,8 +1,6 @@
-#@debug@
 ## Interface: 11307
-#@end-debug@
-## Interface-retail: 90005
-## Interface-classic: 11307
+## Interface-Retail: 90005
+## Interface-Classic: 11307
 
 ## Version: @project-version@
 
@@ -35,3 +33,4 @@ Libs\CallbackHandler-1.0\CallbackHandler-1.0.lua
 Libs\LibSharedMedia-3.0\LibSharedMedia-3.0.lua
 
 core.lua
+

@@ -6,3 +6,7 @@ sublime*
 .idea/misc.xml
 
 .idea/
+
+.release/
+
+release.sh
