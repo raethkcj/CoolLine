@@ -1,8 +1,8 @@
 #@debug@
 ## Interface: 11307
 #@end-debug@
-## Interface-Retail: 90005
-## Interface-Classic: 11307
+## Interface-retail: 90005
+## Interface-classic: 11307
 
 ## Version: @project-version@
 
