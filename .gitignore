@@ -4,3 +4,9 @@ sublime*
 .idea/workspace.xml
 
 .idea/misc.xml
+
+.idea/
+
+.release/
+
+release.sh
