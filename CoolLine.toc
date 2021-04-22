@@ -1,12 +1,12 @@
-#@retail@
-## Interface: 90000
-#@end-retail@
-#@non-retail@
-# ## Interface: 11303
-#@end-non-retail@
+#@debug@
+## Interface: 11307
+#@end-debug@
+## Interface-Retail: 90005
+## Interface-Classic: 11307
+
 ## Version: @project-version@
 
-## Title: |cFF22B14CCoolLine v@project-version@
+## Title: |cFF22B14CCoolLine v|r@project-version@
 
 #@retail@
 ## Notes: Shows cooldowns on a single bar. |cff00b3ff v@project-version@|r modifications by |cff00ffdaLoneWanderer-GH
@@ -30,8 +30,8 @@
 
 # packaged on @project-date-integer@
 
-libs\LibStub\LibStub.lua
-libs\CallbackHandler-1.0\CallbackHandler-1.0.lua
-libs\LibSharedMedia-3.0\LibSharedMedia-3.0.lua
+Libs\LibStub\LibStub.lua
+Libs\CallbackHandler-1.0\CallbackHandler-1.0.lua
+Libs\LibSharedMedia-3.0\LibSharedMedia-3.0.lua
 
 core.lua
