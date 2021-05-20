@@ -24,6 +24,11 @@ jobs:
       with:
         args: -l -g classic
 
+    - uses: BigWigsMods/packager@master
+      name: Build Classic and upload to CurseForge
+      with:
+        args: -l -g bcc
+
     env:
       CF_API_KEY: ${{ secrets.CF_API_KEY }}
 
