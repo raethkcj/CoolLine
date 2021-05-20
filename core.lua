@@ -1,39 +1,57 @@
-local ORANGEY, LIGHTRED             = '|cffFF4500', '|cffff6060'
-local build_toc_version             = select(4, GetBuildInfo())
+local ORANGEY, LIGHTRED                       = '|cffFF4500', '|cffff6060'
+local version, build, date, build_toc_version = GetBuildInfo()
+local major_version = floor(version / 10000)
 -- version numbering is X.XX.XX shorten in param 4 as XXXXX
-local SUPPORTED_RETAIL_VERSION      = 90000
-local MAX_SUPPORTED_RETAIL_VERSION  = 90099
-local MAX_SUPPORTED_CLASSIC_VERSION = 19999
-local IS_RETAIL_RELEASE             = (SUPPORTED_RETAIL_VERSION <= build_toc_version and build_toc_version <= MAX_SUPPORTED_RETAIL_VERSION)
-local IS_CLASSIC                    = (build_toc_version <= MAX_SUPPORTED_CLASSIC_VERSION)
-local AddonBackdropTemplate         = nil
+--local SUPPORTED_RETAIL_VERSION                = 90000
+--local MAX_SUPPORTED_RETAIL_VERSION            = 90099
+--local MAX_SUPPORTED_CLASSIC_VERSION           = 19999
+--local MAX_SUPPORTED_TBC_VERSION               = 29999--20501
+--local IS_RETAIL_RELEASE                       = (SUPPORTED_RETAIL_VERSION <= build_toc_version and build_toc_version <= MAX_SUPPORTED_RETAIL_VERSION)
+--local IS_CLASSIC                              = (build_toc_version <= MAX_SUPPORTED_CLASSIC_VERSION)
+--local IS_TBC                                  = (build_toc_version > MAX_SUPPORTED_CLASSIC_VERSION and build_toc_version <= MAX_SUPPORTED_TBC_VERSION)
 
-local CoolLine                      = CreateFrame("Frame", "CoolLine", UIParent)
-CoolLine.MainFrame                  = CoolLine
+--@version-retail@
+local MAX_SUPPORTED_VERSION = 90099
+--@end-version-retail@
+
+--@version-classic@
+local MAX_SUPPORTED_VERSION = 19999
+--@end-version-classic@
+
+--@version-bcc@
+local MAX_SUPPORTED_VERSION = 20501
+--@end-version-bcc@
+
+--[===[@non-version-classic@
+local AddonBackdropTemplate = "BackdropTemplate"
+--@end-non-version-classic@]===]
+--@version-classic@
+local AddonBackdropTemplate                   = nil
+--@end-version-classic@
+
+local MAX_MAJOR_VERSION = floor(MAX_SUPPORTED_VERSION / 10000)
+
+
+local CoolLine                                = CreateFrame("Frame", "CoolLine", UIParent)
+CoolLine.MainFrame                            = CoolLine
 
 CoolLine:SetScript("OnEvent", function(this, event, ...)
     this[event](this, ...)
 end)
 
-if not IS_RETAIL_RELEASE and not IS_CLASSIC then
-    local version, build, date, tocversion = GetBuildInfo()
+if build_toc_version > MAX_SUPPORTED_VERSION or (major_version < MAX_MAJOR_VERSION) then
     print(format("!!! %sBEWARE %s!!!!", LIGHTRED, "|r"))
     local coolline_version = "@project-version@"
-    print(format("%sCoolLine v%s hasn't been updated to support WoW v |r%s - %sbuild|r %s- %sdate|r %s - %sversion number|r %s", ORANGEY, coolline_version, version, ORANGEY, build, ORANGEY, date, ORANGEY, tocversion))
+    print(format("%sCoolLine v%s hasn't been updated to support WoW v |r%s - %sbuild|r %s- %sdate|r %s - %sversion number|r %s",
+                 ORANGEY, coolline_version, version,
+                 ORANGEY, build,
+                 ORANGEY, date,
+                 ORANGEY, build_toc_version))
     print(format("%sPlease file any bugs you find @ https://github.com/LoneWanderer-GH/CoolLine/issues", ORANGEY))
     print(format("%sPlease be precise and provide as much intel as needed (PTR realm, release, beta etc.)", ORANGEY))
-    if build_toc_version > MAX_SUPPORTED_RETAIL_VERSION then
-        print(format("%sAssuming unsupported version is retail (%d)", LIGHTRED, MAX_SUPPORTED_RETAIL_VERSION))
-        IS_RETAIL_RELEASE = true
-    elseif build_toc_version > MAX_SUPPORTED_CLASSIC_VERSION then
-        print(format("%sAssuming unsupported version is classic (%d)", LIGHTRED, MAX_SUPPORTED_CLASSIC_VERSION))
-        IS_CLASSIC = true
-    end
+    print(format("%sMax supported version is |r%s", ORANGEY, MAX_SUPPORTED_VERSION))
 end
 
-if IS_RETAIL_RELEASE then
-    AddonBackdropTemplate = "BackdropTemplate"
-end
 
 local smed                                                  = LibStub("LibSharedMedia-3.0")
 
@@ -104,7 +122,9 @@ end
 
 CoolLine:RegisterEvent("ADDON_LOADED")
 function CoolLine:ADDON_LOADED(a1)
-    if a1 ~= "CoolLine" then return end
+    if a1 ~= "CoolLine" then
+        return
+    end
     self:UnregisterEvent("ADDON_LOADED")
     self.ADDON_LOADED = nil
 
@@ -405,7 +425,9 @@ end
 
 local function OnUpdate(this, a1, ctime, dofl)
     elapsed = elapsed + a1
-    if elapsed < throt then return end
+    if elapsed < throt then
+        return
+    end
     elapsed = 0
 
     if #cooldowns == 0 then
@@ -517,7 +539,9 @@ do
             local _, _, offset, numSpells = GetSpellTabInfo(i)
             for j = 1, offset + numSpells do
                 local spellName = GetSpellBookItemName(j, btype)
-                if not spellName then break end
+                if not spellName then
+                    break
+                end
                 local spellType, spellID = GetSpellBookItemInfo(j, btype)
                 if IS_RETAIL_RELEASE and spellID and spellType == "FLYOUT" then
                     local _, _, numSlots, isKnown = GetFlyoutInfo(spellID)
@@ -614,7 +638,9 @@ do
 
     spellthrot:SetScript("OnUpdate", function(this, a1)
         selap = selap + a1
-        if selap < 0.3 then return end
+        if selap < 0.3 then
+            return
+        end
         selap = 0
         this:Hide()
         CheckSpellBook(BOOKTYPE_SPELL)
@@ -734,7 +760,9 @@ end
 ------------------------------------------
 function CoolLine:UNIT_ENTERED_VEHICLE()
     ------------------------------------------
-    if not UnitHasVehicleUI("player") then return end
+    if not UnitHasVehicleUI("player") then
+        return
+    end
     self:RegisterEvent("ACTIONBAR_UPDATE_COOLDOWN")
     self:RegisterUnitEvent("UNIT_EXITED_VEHICLE", "player")
     self:ACTIONBAR_UPDATE_COOLDOWN()
@@ -760,7 +788,9 @@ function CoolLine:UNIT_SPELLCAST_FAILED(unit, spell, id8)
         spell = GetSpellInfo(id8) -- TEMPORARY, need to switch to using spell IDs throughout
     end
 
-    if #cooldowns == 0 then return end
+    if #cooldowns == 0 then
+        return
+    end
 
     for index, frame in pairs(cooldowns) do
         if frame.name == spell then
@@ -772,7 +802,9 @@ function CoolLine:UNIT_SPELLCAST_FAILED(unit, spell, id8)
                     failborder:Hide()
                     failborder:SetScript("OnUpdate", function(this, a1)
                         this.alp = this.alp - a1
-                        if this.alp < 0 then return this:Hide() end
+                        if this.alp < 0 then
+                            return this:Hide()
+                        end
                         this:SetAlpha(this.alp > 1 and 1 or this.alp)
                     end)
                 end
@@ -817,8 +849,14 @@ function ShowOptions(a1)
                     CoolLine:SetMovable(true)
                     CoolLine:SetResizable(true)
                     CoolLine:RegisterForDrag("LeftButton")
-                    CoolLine:SetScript("OnMouseUp", function(this, a1) if a1 == "RightButton" then ShowOptions() end end)
-                    CoolLine:SetScript("OnDragStart", function(this) this:StartMoving() end)
+                    CoolLine:SetScript("OnMouseUp", function(this, a1)
+                        if a1 == "RightButton" then
+                            ShowOptions()
+                        end
+                    end)
+                    CoolLine:SetScript("OnDragStart", function(this)
+                        this:StartMoving()
+                    end)
                     CoolLine:SetScript("OnDragStop", function(this)
                         this:StopMovingOrSizing()
                         local x, y   = this:GetCenter()
@@ -834,7 +872,9 @@ function ShowOptions(a1)
                     resize:SetWidth(8)
                     resize:SetHeight(8)
                     resize:SetPoint("BOTTOMRIGHT", CoolLine, "BOTTOMRIGHT", 2, -2)
-                    resize:SetScript("OnMouseDown", function(this) CoolLine:StartSizing("BOTTOMRIGHT") end)
+                    resize:SetScript("OnMouseDown", function(this)
+                        CoolLine:StartSizing("BOTTOMRIGHT")
+                    end)
                     resize:SetScript("OnMouseUp", function(this)
                         CoolLine:StopMovingOrSizing()
                         db.w, db.h = floor(CoolLine:GetWidth() + 0.5), floor(CoolLine:GetHeight() + 0.5)
@@ -893,7 +933,9 @@ function ShowOptions(a1)
 
         local function SetColor(a1)
             local dbc = db[UIDROPDOWNMENU_MENU_VALUE]
-            if not dbc then return end
+            if not dbc then
+                return
+            end
             local r, g, b, a
             if a1 then
                 local pv   = ColorPickerFrame.previousValues
@@ -954,7 +996,9 @@ function ShowOptions(a1)
 
         local function AddColor(lvl, text, value)
             local dbc = db[value]
-            if not dbc then return end
+            if not dbc then
+                return
+            end
             info.hasColorSwatch                                = true
             info.hasOpacity                                    = 1
             info.r, info.g, info.b, info.opacity               = dbc.r, dbc.g, dbc.b, 1 - (dbc.a or 0)
@@ -993,7 +1037,9 @@ function ShowOptions(a1)
                     local starti = 20 * (lvl - 2) + 1
                     local endi   = 20 * (lvl - 1)
                     for i = starti, endi do
-                        if not t[i] then break end
+                        if not t[i] then
+                            break
+                        end
                         AddSelect(lvl, t[i], sub, t[i])
                         if i == endi and t[i + 1] then
                             AddList(lvl, "More", sub)

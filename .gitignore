@@ -10,3 +10,9 @@ sublime*
 .release/
 
 release.sh
+
+test_build_bc/
+
+test_build_classic/
+
+test_build_retail/

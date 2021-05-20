@@ -1,20 +1,21 @@
 ## Interface: 11307
 ## Interface-Retail: 90005
+## Interface-BCC: 20501
 ## Interface-Classic: 11307
-
 ## Version: @project-version@
-
 ## Title: |cFF22B14CCoolLine v|r@project-version@
 
-#@retail@
-## Notes: Shows cooldowns on a single bar. |cff00b3ff v@project-version@|r modifications by |cff00ffdaLoneWanderer-GH
-#@end-retail@
-#@non-retail@
-# ## Notes: Shows cooldowns on a single bar. |cff00b3ff v@project-version@ (Classic)|r modifications by |cff00ffdaLoneWanderer-GH
-#@end-non-retail@
+#@version-retail@
+## Notes: Shows cooldowns on a single bar. |cff00b3ff v@project-version@ (Retail)|r modifications by |cff00ffda@project-author@
+#@end-version-retail@
+#@version-classic@
+## Notes: Shows cooldowns on a single bar. |cff00b3ff v@project-version@ (Classic)|r modifications by |cff00ffda@project-author@
+#@end-version-classic@
+#@version-bcc@
+## Notes: Shows cooldowns on a single bar. |cff00b3ff v@project-version@ (Burning Crusade)|r modifications by |cff00ffda@project-author@
+#@end-version-bcc@
 
-
-## Author: TotalPackage, Phanx, |cff00ffdaLoneWanderer-GH|r with contributions from |cFF22B14Ccapoferro
+## Author: TotalPackage, Phanx, |cff00ffda@project-author@|r with contributions from |cFF22B14Ccapoferro
 
 ## X-Curse-Project-ID: 356973
 
