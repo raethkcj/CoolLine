@@ -706,8 +706,7 @@ function CoolLine:PET_BAR_UPDATE_COOLDOWN()
     for i = 1, 10 do
         local start, duration, enable = GetPetActionCooldown(i)
         if enable == 1 then
-            local name, _, texture
-            name, texture = GetPetActionInfo(i)
+            local name, texture = GetPetActionInfo(i)
             if name then
                 if start > 0 and not block[name] then
                     if duration > 3 then
